@@ -1,7 +1,9 @@
-For the code, I first separated Nathan's code into two nodes, one consisting determining a state, turning, and another, an intention, to get pass people. The 'turn.cpp' file is under the folder 'turn_movement' and the 'crowded.cpp' file is under the folder 'crowded_movement'.
+Robotic Navigation
 
-For the turning node, I added a publisher that published data msgs that is either "No turning", "Turning right", or "Turning left". When I was working on the code, I realized Nathan's code had a few bugs: the code was consistently stating that robot was not turning although it was. I fixed most of it; however, when the robot makes the last turn to its destination, the node will publish its turning.
+The code is separated into two nodes, one consisting determining a state, turning, and another, an intention, to get pass people. The 'turn.cpp' file is under the folder 'turn_movement' and the 'crowded.cpp' file is under the folder 'crowded_movement'.
+
+For the turning node, a publisher was added that published data msgs that is either "No turning", "Turning right", or "Turning left".
 
 For the blocking node, the publisher publishes 'true' or 'false' based on the bot is being blocked or not. I messed around with the 'EVandPlanner' node but I kept getting errors. However, when I used Global_planner/plan. it started working.
 
-For this to work, I get the current and previous plan, and averaged the distances between the two and set a condition on it in the method getAverageDiffGlobalPath(). Also, I added leg_detector and speak_message_service. For the leg_detector, I added another method, blockLegs() which would return true if legs are detected near the robot. Overall, the condition for the blockLegs() method and getAverageDiffGlobalPath() are sufficiently correct, but needs more improvements
+For this to work, I get the current and previous plan, and averaged the distances between the two and set a condition on it in the method getAverageDiffGlobalPath(). Also, I added leg_detector and speak_message_service. For the leg_detector, I added another method, blockLegs() which would return true if legs are detected near the robot. Overall, the condition for the blockLegs() method and getAverageDiffGlobalPath() are sufficiently correct, but needs more improvements.
